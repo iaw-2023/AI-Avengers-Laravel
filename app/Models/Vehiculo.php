@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Reserva;
+use App\Models\Marca;
 
 class Vehiculo extends Model
 {
@@ -14,4 +16,15 @@ class Vehiculo extends Model
         'patente',
         'precio',
     ];
+
+    public function marca()
+    {
+        return $this->belongsTo(Marca::class, 'id_marca');
+    }
+
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class);
+    }
+
 }
